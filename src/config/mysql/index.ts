@@ -1,7 +1,8 @@
 import { Sequelize } from 'sequelize';
 
-import { PROJECT_ENV, PROJECT_ENV_ENUM } from '../../constant';
 import { MYSQL_CONFIG } from '../secret';
+
+import { PROJECT_ENV, PROJECT_ENV_ENUM } from '@/constant';
 
 export const dbName =
   PROJECT_ENV !== PROJECT_ENV_ENUM.prod

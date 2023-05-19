@@ -1,8 +1,9 @@
 import Koa from 'koa';
+import 'module-alias/register'; // 路径别名 @
 
-import { connectMysql } from './config/mysql';
-import { PROJECT_PORT } from './constant';
-import { loadAllRoutes } from './router';
+import { connectMysql } from '@/config/mysql';
+import { PROJECT_PORT } from '@/constant';
+import { loadAllRoutes } from '@/router';
 
 function runServer() {
   const port = +PROJECT_PORT; // 端口

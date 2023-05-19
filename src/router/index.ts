@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import Router from 'koa-router';
 
-import { PROJECT_ENV, PROJECT_NAME, PROJECT_NODE_ENV } from '../constant';
+import { PROJECT_ENV, PROJECT_NAME, PROJECT_NODE_ENV } from '@/constant';
 
 const router = new Router();
 
