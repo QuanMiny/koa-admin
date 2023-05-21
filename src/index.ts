@@ -16,6 +16,7 @@ function runServer() {
         // connectRedis(), // 连接redis
         // createPubSub(), // 创建redis的发布订阅
       ]);
+      require('@/model');
       loadAllRoutes(app); // 加载所有路由
       await new Promise((resolve) => {
         app.listen(port, () => {
