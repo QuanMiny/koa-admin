@@ -4,8 +4,8 @@
   "description": "koa-admin",
   "scripts": {
     "dev": "cross-env NODE_ENV=development NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=development NODE_APP_RELEASE_PROJECT_PORT=3300 nodemon ./src/index.ts",
-    "dev:beta": "cross-env NODE_ENV=development NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=beta NODE_APP_RELEASE_PROJECT_PORT=3300 nodemon ./src/index.ts",
-    "dev:prod": "cross-env NODE_ENV=development NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=prod NODE_APP_RELEASE_PROJECT_PORT=3200 nodemon ./src/index.ts",
+    "dev:beta": "cross-env NODE_ENV=beta NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=beta NODE_APP_RELEASE_PROJECT_PORT=3300 nodemon ./src/index.ts",
+    "dev:prod": "cross-env NODE_ENV=production NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=prod NODE_APP_RELEASE_PROJECT_PORT=3200 nodemon ./src/index.ts",
     "lint": "eslint --config ./.eslintrc.js . --ext .js,.ts",
     "lint:fix": "eslint --config ./.eslintrc.js --fix . --ext .js,.ts",
     "prepare": "husky install",
