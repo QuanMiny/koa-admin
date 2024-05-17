@@ -1,13 +1,13 @@
-import Koa from 'koa';
-import 'module-alias/register'; // 路径别名 @
+import Koa from 'koa'
+import 'module-alias/register' // 路径别名 @
 
-import { connectMysql } from '@/config/mysql';
-import { PROJECT_PORT } from '@/constant';
-import { loadAllRoutes } from '@/router';
+import { connectMysql } from '@/config/mysql'
+import { PROJECT_PORT } from '@/constant'
+import { loadAllRoutes } from '@/router'
 
 function runServer() {
-  const port = +PROJECT_PORT; // 端口
-  const app = new Koa();
+  const port = +PROJECT_PORT // 端口
+  const app = new Koa()
 
   async function main() {
     try {
@@ -15,21 +15,21 @@ function runServer() {
         connectMysql(), // 连接mysql
         // connectRedis(), // 连接redis
         // createPubSub(), // 创建redis的发布订阅
-      ]);
-      require('@/model');
-      loadAllRoutes(app); // 加载所有路由
+      ])
+      require('@/model')
+      loadAllRoutes(app) // 加载所有路由
       await new Promise((resolve) => {
         app.listen(port, () => {
-          resolve('ok');
-        });
-      });
+          resolve('ok')
+        })
+      })
     } catch (error) {
-      console.log(`项目启动失败！`);
-      console.log(error);
+      console.log(`项目启动失败！`)
+      console.log(error)
     }
   }
 
-  main();
+  main()
 }
 
-runServer();
+runServer()

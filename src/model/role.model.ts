@@ -1,6 +1,6 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize'
 
-import sequelize from '@/config/mysql';
+import sequelize from '@/config/mysql'
 
 const model = sequelize.define(
   'role',
@@ -34,6 +34,6 @@ const model = sequelize.define(
   {
     freezeTableName: true,
   }
-);
+)
 
-export default model;
+export default model

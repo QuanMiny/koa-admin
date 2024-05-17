@@ -1,13 +1,13 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize'
 
-import { MYSQL_CONFIG } from '../secret';
+import { MYSQL_CONFIG } from '../secret'
 
-import { PROJECT_ENV, PROJECT_ENV_ENUM } from '@/constant';
+import { PROJECT_ENV, PROJECT_ENV_ENUM } from '@/constant'
 
 export const dbName =
   PROJECT_ENV !== PROJECT_ENV_ENUM.prod
     ? `${MYSQL_CONFIG.database}_test`
-    : MYSQL_CONFIG.database;
+    : MYSQL_CONFIG.database
 
 const sequelize = new Sequelize(
   dbName,
@@ -30,26 +30,26 @@ const sequelize = new Sequelize(
     },
     timezone: '+08:00',
   }
-);
+)
 
 /** 连接数据库 */
 export const connectMysql = async () => {
   const msg = (flag: boolean) =>
     `连接${MYSQL_CONFIG.host}:${MYSQL_CONFIG.port}服务器的mysql数据库${dbName}${
       flag ? '成功' : '失败'
-    }!`;
+    }!`
 
   try {
     console.log(
       `开始连接${MYSQL_CONFIG.host}:${MYSQL_CONFIG.port}服务器的mysql数据库${dbName}...`
-    );
-    await sequelize.authenticate();
-    console.log(msg(true));
+    )
+    await sequelize.authenticate()
+    console.log(msg(true))
   } catch (error) {
-    console.log(msg(false));
-    console.log(error);
-    throw new Error(msg(false));
+    console.log(msg(false))
+    console.log(error)
+    throw new Error(msg(false))
   }
-};
+}
 
-export default sequelize;
+export default sequelize

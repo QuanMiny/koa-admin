@@ -4,8 +4,8 @@ export enum PROJECT_ENV_ENUM {
   beta = 'beta',
 }
 
-export const PROJECT_NAME = process.env.NODE_APP_RELEASE_PROJECT_NAME as string;
+export const PROJECT_NAME = process.env.NODE_APP_RELEASE_PROJECT_NAME as string
 export const PROJECT_ENV = process.env
-  .NODE_APP_RELEASE_PROJECT_ENV as PROJECT_ENV_ENUM;
-export const PROJECT_PORT = process.env.NODE_APP_RELEASE_PROJECT_PORT as string;
-export const PROJECT_NODE_ENV = process.env.NODE_ENV as string;
+  .NODE_APP_RELEASE_PROJECT_ENV as PROJECT_ENV_ENUM
+export const PROJECT_PORT = process.env.NODE_APP_RELEASE_PROJECT_PORT as string
+export const PROJECT_NODE_ENV = process.env.NODE_ENV as string
