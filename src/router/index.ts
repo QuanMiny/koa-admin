@@ -1,11 +1,9 @@
 import fs from 'fs'
-
+import path from 'path'
 import Router from 'koa-router'
-
-import { PROJECT_ENV, PROJECT_NAME, PROJECT_NODE_ENV } from '@/constant'
+import { PROJECT_ENV, PROJECT_NAME } from '@/constant'
 
 const router = new Router()
-
 export function loadAllRoutes(app) {
   router.get('/', async (ctx, next) => {
     ctx.body = {
@@ -13,24 +11,30 @@ export function loadAllRoutes(app) {
     }
     await next()
   })
-
   app.use(router.routes()).use(router.allowedMethods()) // 每一个router都要配置routes()和allowedMethods()
 
-  fs.readdirSync(__dirname).forEach((file) => {
+  const files = fs.readdirSync(__dirname) // 获取当前目录下的所有文件
+  files.forEach(async (file) => {
     try {
-      if (PROJECT_NODE_ENV === 'development') {
-        if (file === 'index.ts') return
-      } else if (file === 'index.js') return
-
-      const allRouter = require(`./${file}`).default
-      app.use(allRouter.routes()).use(allRouter.allowedMethods()) // allRouter也要配置routes()和allowedMethods()
-      // router.use('/front', allRouter.routes()).use(allRouter.allowedMethods());
-      router.use('/admin', allRouter.routes()).use(allRouter.allowedMethods()) // admin的router也要配置routes()和allowedMethods()
-      console.log(`加载路由: ${file}`)
+      const allRouter = await importFile(file)
+      if (allRouter) {
+        // 在这里处理每个路由
+        app.use(allRouter.routes()).use(allRouter.allowedMethods()) // allRouter也要配置routes()和allowedMethods()
+        console.log(`加载路由: ${file}`)
+      }
     } catch (error) {
-      console.log(`加载${file}路由出错:`)
-      console.log(error)
+      console.error(`加载路由: ${file}出错`, error)
     }
   })
   console.log('加载所有路由完成~')
+}
+
+async function importFile(file) {
+  try {
+    const importedModule = await import(path.join(__dirname, file))
+    return importedModule.default // 读取默认导出文件
+  } catch (error) {
+    console.error(`Error importing ${file}:`, error)
+    return null
+  }
 }
