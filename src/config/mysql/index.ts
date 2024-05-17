@@ -47,8 +47,7 @@ export const connectMysql = async () => {
     console.log(msg(true))
   } catch (error) {
     console.log(msg(false))
-    console.log(error)
-    throw new Error(msg(false))
+    console.error(error)
   }
 }
 
