@@ -1,6 +1,4 @@
-import menuModel from '@/model/menu.model'
-import roleModel from '@/model/role.model'
-import userModel from '@/model/user.model'
+import { menuModel, roleModel, userModel } from '@/models'
 
 export default class UserService {
   public static async getUserById(id: number) {
