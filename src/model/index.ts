@@ -2,25 +2,23 @@ import menuModel from './menu.model';
 import roleModel from './role.model';
 import roleMenuModel from './roleMenu.model';
 import userModel from './user.model';
-import userRoleModel from './userRole.model';
 
 // import sequelize from '@/config/mysql';
 
-userModel.belongsToMany(roleModel, {
-  through: userRoleModel,
-  foreignKey: 'user_id',
-});
+userModel.belongsTo(roleModel, { foreignKey: 'role_id' });
 
-roleModel.belongsToMany(userModel, {
-  through: userRoleModel,
+roleModel.belongsToMany(menuModel, {
+  through: roleMenuModel,
   foreignKey: 'role_id',
 });
 
-roleModel.hasMany(roleMenuModel, { foreignKey: 'role_id' });
-roleMenuModel.hasOne(menuModel, { foreignKey: 'id' });
+menuModel.belongsToMany(roleModel, {
+  through: roleMenuModel,
+  foreignKey: 'menu_id',
+});
 
 // (async () => {
 //   await sequelize.sync({ force: true }); // 同步
 // })();
 
-export { menuModel, roleModel, userModel, roleMenuModel, userRoleModel };
+export { menuModel, roleModel, userModel, roleMenuModel };

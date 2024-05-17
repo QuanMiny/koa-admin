@@ -1,8 +1,12 @@
 import { Context } from 'koa';
 
+import UserService from '@/service/user.service';
+
 class UserController {
-  index(ctx: Context) {
-    ctx.body = ['1', '2'];
+  async index(ctx: Context) {
+    const { userId } = ctx.params;
+    const result = await UserService.getUserById(userId);
+    ctx.body = result;
   }
 }
 

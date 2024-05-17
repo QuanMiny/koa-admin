@@ -12,19 +12,19 @@ const model = sequelize.define(
       autoIncrement: true,
     },
     // 菜单名称
-    page_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: '',
     },
     // 页面地址
-    page_url: {
+    path: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: '',
     },
-    // 控件地址
-    control_url: {
+    // 组件地址（菜单为父级时无组件地址）
+    component: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: '',
@@ -47,14 +47,41 @@ const model = sequelize.define(
       allowNull: false,
       defaultValue: '',
     },
+    // 具体名称
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+    },
+    // 具体链接地址代表链接菜单 空字符串则不是
+    isLink: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+    },
     // 是否显示：0否 1是*/
-    is_show: {
+    isHide: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    // 是否全屏：0否 1是*/
+    isFull: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    // 是否固定：0否 1是*/
+    isAffix: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    // 是否缓存：0否 1是*/
+    isKeepAlive: {
       type: DataTypes.TINYINT,
       allowNull: false,
       defaultValue: 1,
-    },
-    remark: {
-      type: DataTypes.STRING(200),
     },
     createdAt: {
       type: DataTypes.DATE,

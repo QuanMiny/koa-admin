@@ -43,9 +43,7 @@ export const connectMysql = async () => {
     console.log(
       `开始连接${MYSQL_CONFIG.host}:${MYSQL_CONFIG.port}服务器的mysql数据库${dbName}...`
     );
-    await sequelize.authenticate({
-      logging: PROJECT_ENV !== 'prod',
-    });
+    await sequelize.authenticate();
     console.log(msg(true));
   } catch (error) {
     console.log(msg(false));

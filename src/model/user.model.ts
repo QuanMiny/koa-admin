@@ -29,12 +29,6 @@ const model = sequelize.define(
       allowNull: false,
       defaultValue: '',
     },
-    // 角色id
-    role_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
     // 手机号码 */
     mobile: {
       type: DataTypes.STRING,
