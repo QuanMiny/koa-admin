@@ -6,8 +6,8 @@
     "dev": "cross-env NODE_ENV=development NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=development NODE_APP_RELEASE_PROJECT_PORT=3300 nodemon ./src/index.ts",
     "dev:beta": "cross-env NODE_ENV=beta NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=beta NODE_APP_RELEASE_PROJECT_PORT=3300 nodemon ./src/index.ts",
     "dev:prod": "cross-env NODE_ENV=production NODE_APP_RELEASE_PROJECT_NAME=koa-admin-server NODE_APP_RELEASE_PROJECT_ENV=prod NODE_APP_RELEASE_PROJECT_PORT=3200 nodemon ./src/index.ts",
-    "lint": "eslint --config ./.eslintrc.js . --ext .js,.ts",
-    "lint:fix": "eslint --config ./.eslintrc.js --fix . --ext .js,.ts",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "prepare": "husky install",
     "prettier": "prettier --write .",
     "commit": "cz"
@@ -35,9 +35,7 @@
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.40.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "prettier": "^2.8.8"
@@ -48,6 +46,6 @@
     }
   },
   "_moduleAliases": {
-    "@"  : "./src"
+    "@": "./src"
   }
 }
