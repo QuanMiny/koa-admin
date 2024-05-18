@@ -17,6 +17,7 @@ const sequelize = new Sequelize(
     host: MYSQL_CONFIG.host,
     port: MYSQL_CONFIG.port,
     dialect: 'mysql',
+    logging: false,
     dialectOptions: {
       // 返回正确的时间戳字符串。
       dateStrings: true,
