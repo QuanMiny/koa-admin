@@ -1,9 +1,9 @@
-import app from './app'
 import 'module-alias/register' // 路径别名 @
+import app from './app'
 
 import { connectMysql } from '@/config/mysql'
 import { PROJECT_PORT } from '@/constant'
-import { loadAllRoutes } from '@/router'
+
 async function runServer() {
   const port = +PROJECT_PORT // 端口
   try {
@@ -11,9 +11,6 @@ async function runServer() {
       connectMysql(), // 连接mysql
       // connectRedis(), // 连接redis
     ])
-
-    // 导入路由
-    loadAllRoutes(app)
 
     await new Promise((resolve) => {
       app.listen(port, () => {

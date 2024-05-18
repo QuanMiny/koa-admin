@@ -1,13 +1,17 @@
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
-
-// const errorHandler = require('./error-handle')
+import { loadAllRoutes } from '@/router'
+import { errorHandler } from './error-handler'
 
 const app = new Koa()
 
 // ctx.body
 app.use(bodyParser())
 
-// app.on('error', errorHandler)
+// errorHandler
+app.on('error', errorHandler)
+
+// 导入路由
+loadAllRoutes(app)
 
 export default app
