@@ -1,27 +1,14 @@
-import { menuModel, roleModel, userModel } from '@/models'
+import { userModel, roleModel } from '@/models'
 
-export default class UserService {
-  public static async getUserById(id: number) {
+class UserService {
+  async getUserByName(name: string) {
     const result = await userModel.findOne({
       where: {
-        id,
+        login_name: name,
       },
-      include: [roleModel],
     })
-
-    console.log(result?.dataValues)
-
-    if (result) {
-      const menus = await roleModel.findOne({
-        where: {
-          id: result.dataValues.role_id,
-        },
-        include: [menuModel],
-      })
-
-      return menus
-    }
-
-    return {}
+    return result
   }
 }
+
+export default new UserService()
