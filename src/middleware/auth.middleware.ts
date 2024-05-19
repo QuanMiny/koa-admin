@@ -23,8 +23,11 @@ const verifyLogin = async (ctx: Context, next: Next) => {
     const error = new Error(ERROR_TYPES.USER_NOT_EXISTS)
     return ctx.app.emit('error', error, ctx)
   }
+
   // 4.判断密码和数据库密码是否一致（加密）
-  if (bcrypt.compareSync(user.login_password, PasswordToHash(password))) {
+  // bcrypt.compareSync(用户输入密码, 数据库hash密码)
+  const isMatch = bcrypt.compareSync(password, user.login_password)
+  if (!isMatch) {
     const error = new Error(ERROR_TYPES.PASSWORD_IS_INCORRECT)
     return ctx.app.emit('error', error, ctx)
   }
