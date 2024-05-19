@@ -26,6 +26,26 @@ class UserService {
       console.log(error)
     }
   }
+
+  async getUserInfoById(id: number) {
+    try {
+      const result = await userModel.findOne({
+        where: {
+          id,
+        },
+        attributes: ['id', 'login_name', 'real_name', 'mobile'],
+        include: [
+          {
+            model: roleModel,
+            attributes: ['role_value', 'role_name', 'role_auth'],
+          },
+        ],
+      })
+      return result?.dataValues
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 export default new UserService()
