@@ -19,7 +19,7 @@ const model = sequelize.define(
     },
     // 登录密码
     login_password: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(120),
       allowNull: false,
       defaultValue: '',
     },
