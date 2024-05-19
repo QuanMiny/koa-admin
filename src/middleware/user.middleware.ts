@@ -2,6 +2,7 @@ import { Context, Next } from 'koa'
 
 import userService from '@/service/user.service'
 import { ERROR_TYPES } from '@/constant'
+import PasswordToHash from '@/utils/password-handle'
 
 const verifyUser = async (ctx: Context, next: Next) => {
   // 1.获取用户名和密码
@@ -23,11 +24,11 @@ const verifyUser = async (ctx: Context, next: Next) => {
   await next()
 }
 
-// const handlePassword = async (ctx, next) => {
-//   const { password } = ctx.request.body
-//   ctx.request.body.password = md5password(password)
+const handlePassword = async (ctx: Context, next: Next) => {
+  const { password } = ctx.request.body
+  ctx.request.body.password = PasswordToHash(password)
 
-//   await next()
-// }
+  await next()
+}
 
-export { verifyUser }
+export { verifyUser, handlePassword }
