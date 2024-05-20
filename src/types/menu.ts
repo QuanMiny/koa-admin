@@ -5,8 +5,8 @@ export interface MenuBase {
   component: string
   parentId: number
   sort: number
-  icon: string
   meta: {
+    icon: string
     title: string
     isLink: string
     isHide: number

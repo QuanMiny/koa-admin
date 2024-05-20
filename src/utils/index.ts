@@ -24,8 +24,8 @@ export const formatMenus = (menus: any[]) => {
         component: menu.component,
         parentId: menu.parent_id, // 驼峰命名转换
         sort: menu.sort,
-        icon: menu.icon,
         meta: {
+          icon: menu.icon,
           title: menu.title,
           isLink: menu.isLink,
           isHide: menu.isHide,
@@ -47,8 +47,8 @@ export const formatMenus = (menus: any[]) => {
           component: menu.component,
           parentId: menu.parent_id,
           sort: menu.sort,
-          icon: menu.icon,
           meta: {
+            icon: menu.icon,
             title: menu.title,
             isLink: menu.isLink,
             isHide: menu.isHide,
