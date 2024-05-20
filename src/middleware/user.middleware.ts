@@ -2,7 +2,7 @@ import { Context, Next } from 'koa'
 
 import userService from '@/service/user.service'
 import { ERROR_TYPES } from '@/constant'
-import PasswordToHash from '@/utils/password-handle'
+import { PasswordToHash } from '@/utils'
 
 const verifyUser = async (ctx: Context, next: Next) => {
   // 1.获取用户名和密码

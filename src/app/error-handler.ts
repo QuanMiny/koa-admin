@@ -30,6 +30,10 @@ export const errorHandler = (error, ctx: ParameterizedContext) => {
       status = 401 // Permission
       msg = ERROR_TYPES.UNPERMISSION
       break
+    case ERROR_TYPES.MENU_NOT_EXISTS:
+      status = 400 // No menu
+      msg = ERROR_TYPES.MENU_NOT_EXISTS
+      break
     default:
       status = 404
       msg = error.message // 默认返回的错误信息

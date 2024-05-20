@@ -17,4 +17,5 @@ export enum ERROR_TYPES {
   PASSWORD_IS_INCORRECT = '密码不正确',
   UNAUTHORIZATION = '无效的token',
   UNPERMISSION = '没有权限',
+  MENU_NOT_EXISTS = '菜单不存在',
 }
