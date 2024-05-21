@@ -13,7 +13,7 @@ class AuthController {
 
     ctx.body = {
       code: 200,
-      data: { id, name: login_name, role_id, token },
+      data: { id, username: login_name, role_id, token },
       msg: '登录成功',
     }
   }

@@ -8,16 +8,16 @@ import { PUBLIC_KEY } from '@/config/secret'
 
 const verifyLogin = async (ctx: Context, next: Next) => {
   // 1.获取用户名和密码
-  const { name, password } = ctx.request.body
+  const { username, password } = ctx.request.body
 
   // 2.判断用户名或者密码不能为空
-  if (!name || !password) {
+  if (!username || !password) {
     const error = new Error(ERROR_TYPES.NAME_OR_PASSWORD_IS_REQUIRED)
     return ctx.app.emit('error', error, ctx)
   }
 
   // 3.判断用户是否存在（用户不存在）
-  const user = await userService.getUserByName(name)
+  const user = await userService.getUserByName(username)
   if (!user) {
     const error = new Error(ERROR_TYPES.USER_NOT_EXISTS)
     return ctx.app.emit('error', error, ctx)

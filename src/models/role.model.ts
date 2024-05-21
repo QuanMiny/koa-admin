@@ -21,7 +21,7 @@ const model = sequelize.define(
     },
     role_auth: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      defaultValue: '',
     },
     remark: {
       type: DataTypes.STRING(200),

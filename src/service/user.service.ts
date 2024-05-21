@@ -1,11 +1,11 @@
 import { userModel, roleModel } from '@/models'
 
 class UserService {
-  async getUserByName(name: string) {
+  async getUserByName(username: string) {
     try {
       const result = await userModel.findOne({
         where: {
-          login_name: name,
+          login_name: username,
         },
       })
       return result?.dataValues
@@ -14,10 +14,16 @@ class UserService {
     }
   }
 
-  async registerUser({ name, password }: { name: string; password: string }) {
+  async registerUser({
+    username,
+    password,
+  }: {
+    username: string
+    password: string
+  }) {
     try {
       const result = await userModel.create({
-        login_name: name,
+        login_name: username,
         login_password: password,
         role_id: 2, // 默认普通用户
       })

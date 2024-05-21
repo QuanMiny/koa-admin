@@ -5,8 +5,8 @@ import { ERROR_TYPES } from '@/constant'
 
 class UserController {
   async register(ctx: Context) {
-    const { name, password } = ctx.request.body
-    const result = await userService.registerUser({ name, password })
+    const { username, password } = ctx.request.body
+    const result = await userService.registerUser({ username, password })
     ctx.body = {
       code: 200,
       data: result.login_name,
