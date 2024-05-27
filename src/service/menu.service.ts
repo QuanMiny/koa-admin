@@ -14,6 +14,7 @@ class MenuService {
           },
         ],
       })
+      // 无法找到该角色或者角色菜单为空的情况
       if (!role || role.dataValues.menus.length === 0) {
         return null
       } else {

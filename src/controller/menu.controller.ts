@@ -7,7 +7,7 @@ class MenuController {
   async getMenuList(ctx: Context) {
     const { roleId } = ctx.params
     const result = await menuService.getMenuListByRoleId(roleId)
-
+    // 返回菜单为null
     if (!result) {
       const error = new Error(ERROR_TYPES.MENU_NOT_EXISTS)
       return ctx.app.emit('error', error, ctx)

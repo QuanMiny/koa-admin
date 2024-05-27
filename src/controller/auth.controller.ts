@@ -6,8 +6,12 @@ class AuthController {
   async login(ctx: Context) {
     const { id, login_name, role_id } = ctx.user
 
+    const { rememberMe } = ctx.request.body
+    // token 有效期
+    const expires = rememberMe ? '7d' : '24h'
+
     const token = jwt.sign({ id, login_name }, PRIVATE_KEY, {
-      expiresIn: 60 * 60 * 24,
+      expiresIn: expires,
       algorithm: 'RS256',
     })
 
