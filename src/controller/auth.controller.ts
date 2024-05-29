@@ -1,6 +1,6 @@
 import { Context } from 'koa'
 import jwt from 'jsonwebtoken'
-import { PRIVATE_KEY } from '@/config/secret'
+import { PRIVATE_KEY } from '@/config'
 
 class AuthController {
   async login(ctx: Context) {

@@ -3,7 +3,6 @@ node_modules
 /dist
 
 src/config/keys
-src/config/secret.ts
 
 # local env files
 .env

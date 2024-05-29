@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 
 import userService from '@/service/user.service'
 import { ERROR_TYPES } from '@/constant'
-import { PUBLIC_KEY } from '@/config/secret'
+import { PUBLIC_KEY } from '@/config'
 
 const verifyLogin = async (ctx: Context, next: Next) => {
   // 1.获取用户名和密码
