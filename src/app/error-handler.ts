@@ -1,8 +1,8 @@
 // import { logger } from './logger'
-import { ParameterizedContext } from 'koa'
+import { Context } from 'koa'
 import { ERROR_TYPES } from '@/constant'
 
-export const errorHandler = (error, ctx: ParameterizedContext) => {
+export const errorHandler = (error, ctx: Context) => {
   let status: number, msg: string
 
   switch (error.message) {
