@@ -1,13 +1,13 @@
 import fs from 'fs'
 import path from 'path'
 import Router from 'koa-router'
-import { PROJECT_ENV, PROJECT_NAME } from '@/constant'
+import { APP_HOST, APP_PORT } from '@/config'
 
 const router = new Router()
 export function loadAllRoutes(app) {
   router.get('/', async (ctx, next) => {
     ctx.body = {
-      message: `欢迎访问${PROJECT_NAME},当前环境:${PROJECT_ENV},当前时间:${new Date().toLocaleString()}`,
+      message: `欢迎访问${APP_HOST}:${APP_PORT},当前时间:${new Date().toLocaleString()}`,
     }
     await next()
   })
