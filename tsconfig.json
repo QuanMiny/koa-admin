@@ -23,6 +23,6 @@
     "compilerOptions": {
       "module": "commonjs" // 指定生成什么模块代码。
     },
-    "transpileOnly": true // 只编译，报警告或者错误一样运行
+    "transpileOnly": false // 只编译，报警告或者错误一样运行
   }
 }
